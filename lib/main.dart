@@ -11,9 +11,8 @@ class QuizApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Quiz em Flutter',
+      title: 'Quizz',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
       home: const NomeJogadorPage(),
     );
   }
@@ -43,7 +42,7 @@ class _NomeJogadorPageState extends State<NomeJogadorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Bem-vindo ao Quiz",
+        title: const Text("Bem-vindo ao Quizz",
           style: TextStyle(color: Colors.white)
           ),
           backgroundColor: Colors.deepPurple,
@@ -61,7 +60,7 @@ class _NomeJogadorPageState extends State<NomeJogadorPage> {
               onPressed: _iniciarQuiz,
               style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
               child: const Text("Jogar",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
             )
           ],
@@ -69,12 +68,4 @@ class _NomeJogadorPageState extends State<NomeJogadorPage> {
       ),
     );
   }
-}
-
-class Pergunta {
-  final String enunciado;
-  final List<String> alternativas;
-  final int respostaCorreta;
-
-  Pergunta(this.enunciado, this.alternativas, this.respostaCorreta);
 }

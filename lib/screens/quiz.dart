@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../main.dart';
 import 'resultado.dart';
 
 class QuizPage extends StatefulWidget {
@@ -11,26 +10,75 @@ class QuizPage extends StatefulWidget {
   State<QuizPage> createState() => _QuizPageState();
 }
 
+class Pergunta {
+  final String enunciado;
+  final List<String> alternativas;
+  final int respostaCorreta;
+
+  Pergunta(this.enunciado, this.alternativas, this.respostaCorreta);
+}
+
 class _QuizPageState extends State<QuizPage> {
   int perguntaAtual = 0;
   int pontuacao = 0;
 
   final List<Pergunta> perguntas = [
-    Pergunta("Qual a capital do Brasil?",
-        ["São Paulo", "Brasília", "Rio de Janeiro"], 1),
-    Pergunta("Quanto é 7 x 8?", ["54", "56", "64"], 1),
-    Pergunta("Quem desenvolveu a linguagem Dart?",
-        ["Apple", "Google", "Microsoft"], 1),
-    Pergunta("Qual desses é um sistema operacional?",
-        ["Python", "Linux", "HTML"], 1),
-    Pergunta("Qual desses animais é um mamífero?",
-        ["Tubarão", "Golfinho", "Jacaré"], 1),
+    Pergunta(
+      "Normalmente, quantos litros de sangue uma pessoa tem?",
+      [
+        "Tem entre 2 a 4 litros",
+        "Tem entre 4 a 6 litros",
+        "Tem 10 litros",
+        "Tem 7 litros",
+        "Tem 0,5 litros"
+      ],
+      1),
+    Pergunta(
+      "De quem e a famosa frase \"Penso, logo existo\"?",
+      [
+        "Platao",
+        "Galileu Galilei",
+        "Descartes",
+        "Socrates",
+        "Francis Bacon"
+      ],
+      2),
+    Pergunta(
+      "Qual o livro mais vendido no mundo a seguir da Biblia?",
+      [
+        "O Senhor dos Aneis",
+        "O Pequeno Principe",
+        "Ela, a Feiticeira",
+        "Um Conto de Duas Cidades",
+        "Dom Quixote"
+      ],
+      4),
+    Pergunta(
+      "Qual a traducao da frase \"Fabiano cogio su saco antes de salir\"?",
+      [
+        "Fabiano coseu seu paleto antes de sair",
+        "Fabiano fechou o saco antes de sair",
+        "Fabiano cortou o saco antes de sair",
+        "Fabiano pegou seu paleto antes de sair",
+        "Fabiano rasgou seu paleto antes de sair"
+      ],
+      3),
+    Pergunta(
+      "Quem e o autor de \"O Principe\"?",
+      [
+        "Maquiavel",
+        "Antoine de Saint-Exupery",
+        "Montesquieu",
+        "Thomas Hobbes",
+        "Rousseau"
+      ],
+      0),
   ];
 
   void responder(int indice) {
     if (indice == perguntas[perguntaAtual].respostaCorreta) {
       pontuacao++;
-  }
+    }
 
     if (perguntaAtual + 1 < perguntas.length) {
       setState(() {
@@ -54,26 +102,43 @@ class _QuizPageState extends State<QuizPage> {
   Widget build(BuildContext context) {
     var pergunta = perguntas[perguntaAtual];
     return Scaffold(
-      appBar: AppBar(title: Text("Pergunta ${perguntaAtual + 1}")),
+      appBar: AppBar(
+        title: Text(
+          "Pergunta ${perguntaAtual + 1}",
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.deepPurple,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(pergunta.enunciado,
-                style:
-                    const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            Text(
+              pergunta.enunciado,
+              style:
+                  const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: 20),
             ...List.generate(pergunta.alternativas.length, (index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5),
-                child: ElevatedButton(
-                  onPressed: () => responder(index),
-                  child: Text(pergunta.alternativas[index]),
+                child: Center(
+                  child: ElevatedButton(
+                    onPressed: () => responder(index),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepPurple,
+                      fixedSize: const Size(250, 50),
+                    ),
+                    child: Text(
+                      pergunta.alternativas[index],
+                      style: const TextStyle(fontSize: 18 ,color: Colors.white),
+                    ),
+                  ),
                 ),
               );
-            })
+            }),
           ],
         ),
       ),
