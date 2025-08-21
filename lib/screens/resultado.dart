@@ -20,37 +20,45 @@ class ResultadoPage extends StatelessWidget {
         style: TextStyle(color: Colors.white)
           ),
           backgroundColor: Colors.deepPurple,),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (pontuacao >= 3) ...[
-              Text("Parabéns, $nomeJogador!",
-                  style:
-                      const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 20),
-            ]else ...[
-              Text("Um dia você consegue, $nomeJogador!",
-                  style:
-                      const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 20),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/fundo.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (pontuacao >= 3) ...[
+                Text("Parabéns, $nomeJogador!",
+                    style:
+                        const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 20),
+              ]else ...[
+                Text("Um dia você consegue, $nomeJogador!",
+                    style:
+                        const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 20),
+              ],
+              Text("Sua pontuação: $pontuacao de $total",
+                  style: const TextStyle(fontSize: 20)),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const NomeJogadorPage()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
+                child: const Text("Jogar Novamente",
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+              )
             ],
-            Text("Sua pontuação: $pontuacao de $total",
-                style: const TextStyle(fontSize: 20)),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const NomeJogadorPage()),
-                );
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
-              child: const Text("Jogar Novamente",
-                style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
-            )
-          ],
+          ),
         ),
       ),
     );

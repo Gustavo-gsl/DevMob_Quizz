@@ -17,6 +17,7 @@ class QuizApp extends StatelessWidget {
     );
   }
 }
+
 class NomeJogadorPage extends StatefulWidget {
   const NomeJogadorPage({super.key});
 
@@ -43,27 +44,36 @@ class _NomeJogadorPageState extends State<NomeJogadorPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Bem-vindo ao Quizz",
-          style: TextStyle(color: Colors.white)
+            style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.deepPurple,
+      ),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/fundo.png"),
+            fit: BoxFit.cover,
           ),
-          backgroundColor: Colors.deepPurple,
         ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("Digite seu nome:",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            TextField(controller: _controller),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _iniciarQuiz,
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
-              child: const Text("Jogar",
-                style: TextStyle(fontSize: 18, color: Colors.white),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text("Digite seu nome:",
+                  style: TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold)),
+              TextField(controller: _controller),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _iniciarQuiz,
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.deepPurple),
+                child: const Text(
+                  "Jogar",
+                  style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

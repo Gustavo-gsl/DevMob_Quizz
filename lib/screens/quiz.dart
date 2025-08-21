@@ -109,37 +109,45 @@ class _QuizPageState extends State<QuizPage> {
         ),
         backgroundColor: Colors.deepPurple,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              pergunta.enunciado,
-              style:
-                  const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 20),
-            ...List.generate(pergunta.alternativas.length, (index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 5),
-                child: Center(
-                  child: ElevatedButton(
-                    onPressed: () => responder(index),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepPurple,
-                      fixedSize: const Size(250, 50),
-                    ),
-                    child: Text(
-                      pergunta.alternativas[index],
-                      style: const TextStyle(fontSize: 18 ,color: Colors.white),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/fundo.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                pergunta.enunciado,
+                style:
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20),
+              ...List.generate(pergunta.alternativas.length, (index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Center(
+                    child: ElevatedButton(
+                      onPressed: () => responder(index),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.deepPurple,
+                        fixedSize: const Size(250, 50),
+                      ),
+                      child: Text(
+                        pergunta.alternativas[index],
+                        style: const TextStyle(fontSize: 18 ,color: Colors.white),
+                      ),
                     ),
                   ),
-                ),
-              );
-            }),
-          ],
+                );
+              }),
+            ],
+          ),
         ),
       ),
     );
