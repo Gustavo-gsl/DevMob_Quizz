@@ -34,27 +34,27 @@ class _QuizPageState extends State<QuizPage> {
       ],
       1),
     Pergunta(
-      "De quem e a famosa frase \"Penso, logo existo\"?",
+      "De quem é a famosa frase \"Penso, logo existo\"?",
       [
-        "Platao",
+        "Platão",
         "Galileu Galilei",
         "Descartes",
-        "Socrates",
+        "Sócrates",
         "Francis Bacon"
       ],
       2),
     Pergunta(
-      "Qual o livro mais vendido no mundo a seguir da Biblia?",
+      "Qual o livro mais vendido no mundo a seguir da Bíblia?",
       [
-        "O Senhor dos Aneis",
-        "O Pequeno Principe",
+        "O Senhor dos Anéis",
+        "O Pequeno Príncipe",
         "Ela, a Feiticeira",
         "Um Conto de Duas Cidades",
         "Dom Quixote"
       ],
       4),
     Pergunta(
-      "Qual a traducao da frase \"Fabiano cogio su saco antes de salir\"?",
+      "Qual a tradução da frase \"Fabiano cogio su saco antes de salir\"?",
       [
         "Fabiano coseu seu paleto antes de sair",
         "Fabiano fechou o saco antes de sair",
@@ -64,7 +64,7 @@ class _QuizPageState extends State<QuizPage> {
       ],
       3),
     Pergunta(
-      "Quem e o autor de \"O Principe\"?",
+      "Quem é o autor de \"O Príncipe\"?",
       [
         "Maquiavel",
         "Antoine de Saint-Exupery",
@@ -140,7 +140,7 @@ class _QuizPageState extends State<QuizPage> {
                       ),
                       child: Text(
                         pergunta.alternativas[index],
-                        style: const TextStyle(fontSize: 18 ,color: Colors.white),
+                        style: const TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
                   ),
