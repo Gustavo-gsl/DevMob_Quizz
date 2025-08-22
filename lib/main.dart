@@ -21,13 +21,14 @@ class QuizApp extends StatelessWidget {
 
 class NomeJogadorPage extends StatefulWidget {
   const NomeJogadorPage({super.key});
-
+    
   @override
   State<NomeJogadorPage> createState() => _NomeJogadorPageState();
 }
 
 class _NomeJogadorPageState extends State<NomeJogadorPage> {
   final TextEditingController _controller = TextEditingController();
+  String? errorText;
   int? ultimaPontuacao;
   String? ultimoNome;
 
@@ -49,7 +50,14 @@ class _NomeJogadorPageState extends State<NomeJogadorPage> {
   }
 
   void _iniciarQuiz() {
-    if (_controller.text.isNotEmpty) {
+    if (_controller.text.isEmpty) {
+      setState(() {
+        errorText = "Campo obrigatório";
+      });
+    } else {
+      setState(() {
+        errorText = null;
+      });
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -87,7 +95,10 @@ class _NomeJogadorPageState extends State<NomeJogadorPage> {
               Center(
                 child: SizedBox(
                   width: 250,
-                  child: TextField(controller: _controller),
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(errorText: errorText),
+                    ),
                 ),
               ),
               const SizedBox(height: 20),
